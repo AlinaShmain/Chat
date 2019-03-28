@@ -18,20 +18,22 @@ let app = {
 	// data: {
 		name: '', 
 		msg: '',
+		messages: [],
+
 	// }, 
 	// methods: {
 		sendMsg: function() {
     		return () => {
 
-				if(this.data.msg){
+				if(this.msg){
 					axios.post(url, {
-						user: this.data.name,
-						text: this.data.msg
+						user: this.name,
+						text: this.msg
 					})
 
 					if(response.status===200){
 			            console.log('success');
-			            this.data.msg= '';
+			            this.msg= '';
 			        }
 				}
 			}
@@ -48,10 +50,22 @@ let app = {
 			}
 		},
 
-		inputHandler: function(e){
-	        if(e.keyCode===13){
-	            this.sendMsg();
-	        }
+		inputHandler: function(){
+			// return () => {
+
+			// }
+	  //       if(e.keyCode===13){
+	  //           this.sendMsg();
+	  //       }
+    	},
+
+    	msgLsnr: function(){
+    		return () => {
+	    		 axios.get(url)
+	  	 		.then(response => {
+	  			// messages.push(response.data[0])
+	  			console.log(response.data[0]);
+    		}
     	},
 
     	clickHandler: function(){
@@ -60,7 +74,10 @@ let app = {
 					let userMsg = document.getElementById('msg').value;
 					if(userName.trim() && userMsg.trim()){
 						console.log('click');
-						// sendMsg()
+						this.name = userName;
+						this.text = userMsg;
+						sendMsg();
+
 					} else return;
     			})
     		}
