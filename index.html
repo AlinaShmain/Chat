@@ -3,28 +3,25 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="style.css">
-	<!-- <script src="./bower_components/axios/dist/axios.js"></script> -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="https://unpkg.com/cookie_js@1.2.2/cookie.min.js"></script>
+	<script src="script.js"></script>
 	<title>Chat</title>
 </head>
 <body>
 	<div id="app">
-	    <div class="form-container">
+	    <div id="menu">
 	    	<h1>Chat</h1>
-	    	<!-- <div id="login"> -->
-	    		<input id="name" type="text" placeholder="Username">
-	    		<!-- <button type="button" class="btn" id="authorize">Login</button> -->
-	    	<!-- </div> -->
-	    	<textarea placeholder="Type message.." id="msg" required></textarea>
-
-	    	<button type="button" class="btn" id="send">Send</button>
+	    	<input type="button" value="Delete" class="btn del">
+	    	<input type="button" value="Edit" class="btn edit">
 	    </div>
-
-		<div class=”messages”>
-
+	   	<div id="chatWindow"></div>
+		<div class="typingArea">
+	 		<i class="fas fa-chevron-right send" id="newMsg"></i>
+	 		<i class="fas fa-angle-down send" id="editMsg"></i>
+	  		<textarea placeholder="Type message.." id="chatInput"></textarea>
 		</div>
 	</div>
-
-	<script src="script.js"></script>
 </body>
 </html>

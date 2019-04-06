@@ -1,79 +1,188 @@
-body {font-family: Arial, Helvetica, sans-serif;}
-* {box-sizing: border-box;}
-
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  background: #616161;
+}
 
 #app {
-    width: 100%;
+  width: 792px;
+  margin: auto;
 }
 
-.form-container {
-  width: 300px;
-  padding: 10px;
-  background-color: white;
-  float:left;
+#menu {
+  height: 80px;
+  background: #00aabb;
+  position: relative;
 }
 
-.form-container textarea {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
+h1 {
+  color: #f1f1f1;
+  position: absolute;
+  margin: 0;
+  top: 28.6px;
+  left: 10px;
+}
+
+.btn {
+  position: absolute;
+  top: 50%;
+  width: 70px;
+  height: 20px;
+  margin-top: -10px;
+  text-align: center;
+  text-decoration:none;  
   border: none;
-  background: #f1f1f1;
-  resize: none;
-  min-height: 200px;
-}
-
-.form-container textarea:focus {
-  background-color: #ddd;
+  border-radius: 18px;
+  background: rgb(245,245,245) linear-gradient(#f4f4f4, #f1f1f1);
+  transition: all .218s ease 0s;
+  opacity:0.97;
+  display: none;
   outline: none;
 }
 
-.form-container .btn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  margin-bottom:10px;
-  opacity: 0.8;
+.del {
+  right: 10px;
 }
 
-/*.form-container #login {
-    width: 100%;
-    padding: 5px;
-    float: left;
-}*/
-
-.form-container #name {
-    margin: 5px;
-    padding: 10px;
+.edit {
+  left: 632px;
+  margin-right: 10px;
 }
 
-.messages {
-    width: 600px;
-    float: left;
+.btn:hover {
+  color: rgb(24,24,24);
+  box-shadow: 0 1px 4px rgba(0,0,0,.1);
+  background: #D1CFCF;
 }
 
-
-
-/*.body-panel
-{
+#chatWindow {
+    height: 400px;
     overflow-y: scroll;
-    height: 250px;
+    background: #fff;
 }
-::-webkit-scrollbar-track
-{
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    background-color: #F5F5F5;
+
+.typingArea {
+    position: relative;
+    width: 100%;
+    height: 70px;
+    background: #f1f1f1;
+    border: none;
 }
-::-webkit-scrollbar
-{
-    width: 12px;
-    background-color: #F5F5F5;
+
+#chatInput {
+  position: absolute;
+  top: 17px;
+  left: 10px;
+  width: 720px;
+  height: 30px;
+  padding: 3px;
+  background-color: #fff;
+  border-radius: 10px;
 }
-::-webkit-scrollbar-thumb
-{
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-    background-color: #555;
-}*/
+
+.send {
+    position: absolute;
+    top: 20px;
+    right: 1px;
+    width: 60px;
+    font-size: 30px;
+    text-align: center;
+    color: #00aabb;
+}
+
+#newMsg {
+  display: block;
+}
+
+#editMsg {
+  display: none;
+}
+
+textarea {
+    position: relative;
+    border: none;
+    width: 240px;
+    padding: 8px;
+    background: #f1f1f1;
+    resize: none;
+    outline: none;
+}
+
+.container-right {
+  position: relative;
+  text-align: right;
+}
+
+.container-left {
+  text-align: left;
+}
+
+.chosenMsg {
+  background: #DCD6D6;
+}
+
+.speech-bubble {
+  position: relative;
+  width: fit-content;
+  max-width: 70%;
+  overflow-wrap: break-word;
+  /*word-wrap: break-word;*/
+  border-radius: 10px;
+  padding: 10px;
+  display: inline-block;
+}
+
+.status {
+  width: fit-content;
+  color: #48AE70;
+  margin-right: 5px;
+  display: none;
+}
+
+.right-bubble {
+  background-color: #00aabb;
+  margin: 30px 8px 30px 0px;
+}
+
+.right-bubble:after {
+  content: ' '; 
+  position: absolute; 
+  right: -5px;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: solid transparent;
+  border-left-color: #00aabb;
+  border-width: 6px;
+  border-right: 0;
+  margin-top: -6px;
+}
+
+.left-bubble {
+    background-color: #f1f1f1;
+    margin: 30px 0px 30px 8px;
+}
+
+.left-bubble:after { 
+  content: ' '; 
+  position: absolute; 
+  left: 0;
+  right: 100%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: solid transparent;
+  border-right-color: #f1f1f1;
+  border-width: 6px;
+  border-left: 0;
+  margin-top: -6px;
+  margin-left: -4px;
+}
+
+.username {
+  display: inline-block;
+  width: fit-content;
+  overflow-wrap: break-word;
+  max-width: 20%;
+  padding: 0px 5px;
+}
