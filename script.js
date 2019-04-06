@@ -73,6 +73,7 @@ window.onload = function() {
 		messages: [],
 		mineMessagesId: [],
 		lastMsgId: -1,
+		chosenMsgId: -1,
 
 		init(url){
 			return () => {
@@ -273,11 +274,14 @@ window.onload = function() {
 				document.getElementById('newMsg').style.display = 'block';
 
 		    	if(text.trim()){
-		    		this.request.httpPut(msg.id, text)
+		    		// this.request.httpPut(msg.id, text)
+		    		this.request.httpPut(this.chosenMsgId, text)
 		    				.then(() => {
 		    					let status = msg.childNodes[0];
 								status.innerHTML = 'edited';
 								status.style.display = 'inline-block';
+
+								this.chosenMsgId = -1;
 
 								setTimeout(() => {
 									status.style.display = 'none';
@@ -321,6 +325,18 @@ window.onload = function() {
 			if(document.getElementById('chatInput').value){
 				document.getElementById('chatInput').value = "";
 			}
+
+			(app.changeId(this))();
+		},
+
+		changeId(msg){
+			return () => {
+			    if(this.chosenMsgId == -1){
+				    this.chosenMsgId = msg.getAttribute('id');
+				} else {
+					this.chosenMsgId = -1;
+				}
+			};
 		},
 
 		removeMsg(){
@@ -335,7 +351,12 @@ window.onload = function() {
 						btns[i].style.display = 'none';
 					}
 
-					this.request.httpDelete(msg.id);
+					// this.request.httpDelete(msg.id);
+					this.request.httpDelete(this.chosenMsgId)
+						.then(
+							() => {
+								this.chosenMsgId = -1;
+							});
 				}
 			};
 		},
