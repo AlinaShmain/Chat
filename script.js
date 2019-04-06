@@ -76,16 +76,6 @@ window.onload = function() {
 
 		init(url){
 			return () => {
-				// this.user = cookie.get('user');
-				// if (this.user){
-				//   this.user = prompt('Choose username:');
-				//   if (!this.user){
-				//     alert('We cannot work with you like that!');
-				//     return;
-				//   } else {
-				//     cookie.set('user', this.user);
-				//   }
-				// }
 
 				this.user = localStorage.getItem('user');
 				if(this.user){
