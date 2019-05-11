@@ -87,7 +87,7 @@ window.onload = function() {
                         });
             }
             this.loadBtns();
-            // setInterval(this.checkToUpdate(), CHECK_INTERVAL);
+            setInterval(this.checkToUpdate(), CHECK_INTERVAL);
         }
 
         init() {
