@@ -57,7 +57,6 @@ window.onload = function() {
                     if ($.isPlainObject(obj) || $.isArray(obj)) {
                         $.each(obj, (key, value) => {
                             if (typeof(value) == 'undefined' || value === null || value === "") {
-                                console.log(data[idx]);
                                 delete data[idx];
                             }
                         });
@@ -128,14 +127,12 @@ window.onload = function() {
         differences(a, b) {
             a.filter(x => { //In a and not in b
                 if (!b.find(el => x.id == el.id)) {
-                    console.log(x);
                     this.saveMsg(x);
                 }
             });
 
             b.filter((x, i) => { //In b and not in a
                 if (!a.find(el => x.id == el.id)) {
-                    console.log(x);
                     let elem = $("div").find("[data-id='" + x.id + "']")[0];
                     this.delMsg(elem, i);
                 }
@@ -143,7 +140,6 @@ window.onload = function() {
 
             a.filter(x => { //in a and b but different values
                 if (!b.find(el => x.text == el.text)) {
-                    console.log(x);
                     let elem = $("div").find("[data-id='" + x.id + "']");
                     elem.children(".speech-bubble").text(x.text);
                     let idx = this.messages.findIndex(k => k.id == x.id);
@@ -185,7 +181,7 @@ window.onload = function() {
                 let text = $("<p></p>", { 'class': 'speech-bubble', 'text': data.text });
                 let status = $("<p></p>", { 'class': 'status' });
 
-                if (!data.myMessage) {
+                if (data.myMessage != null) {
                     messageForm.addClass("container-right");
                     name.text(":Me");
                     text.addClass("right-bubble");
@@ -287,7 +283,7 @@ window.onload = function() {
                         .then(() => { this.displayStatus(msg, "edited"); })
                         .catch(error => {
                             if (error.response) {
-                            	msg.children(".speech-bubble").text(initMsg);
+                                msg.children(".speech-bubble").text(initMsg);
                                 this.displayStatus(msg, "not edited", true);
                             }
                         });
